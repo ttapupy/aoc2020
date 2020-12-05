@@ -27,7 +27,3 @@ input.each do |n|
   end
   break if br
 end
-
-# Sharparam's solution:
-# puts input.combination(2).find { |p| p.sum == 2020 }.reduce(&:*)
-# puts input.combination(3).find { |p| p.sum == 2020 }.reduce(&:*)
