@@ -1,16 +1,13 @@
 base_name = File.basename(__FILE__)[0..-4]
-sum = 0
-File.read("./#{base_name}.input").split(/\n{2,}/).map do |group|
-  yes = group.gsub("\n", '').chars.uniq.size
-  sum += yes
-end
+sum =
+  File.read("./#{base_name}.input").split(/\n{2,}/).map do |group|
+    group.gsub("\n", '').chars.uniq.size
+  end.sum
 p sum
 
 # part2
-sum2 = 0
-File.read("./#{base_name}.input").split(/\n{2,}/).map do |group|
-  yes = group.split("\n").map(&:chars)
-  count = yes.reduce(&:&).size
-  sum2 += count
-end
+sum2 =
+  File.read("./#{base_name}.input").split(/\n{2,}/).map do |group|
+    group.split("\n").map(&:chars).reduce(&:&).size
+  end.sum
 p sum2
