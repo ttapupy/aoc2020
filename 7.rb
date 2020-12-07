@@ -30,7 +30,7 @@ end
 
 
 def inside(rules, term, count=0)
-  bags ||= count
+  bags = count
   rules[term].each do |bag|
     bags = inside(rules, bag, bags+1)
   end
