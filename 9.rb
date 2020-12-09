@@ -2,7 +2,6 @@ base_name = File.basename(__FILE__)[0..-4]
 
 input = File.readlines("./#{base_name}.txt", chomp: true).map(&:to_i)
 
-#p input[0..25]
 
 def preamble(list, x)
   list[x - 25..x - 1].combination(2).map do |a, b|
@@ -24,18 +23,17 @@ end
 
 # part 2
 part_2 = 0
-lista = []
-input.size.times do |t|
-  input[t..-1].each_with_index do |num, idx|
-    if input[t..t + idx].reduce(&:+) == part_1
-      lista = input[t..t + idx]
-      part_2 = input[t] + num
+s = input.size
+s.times do |t|
+  (t..s-1).each do |idx|
+    if input[t..idx].sum == part_1
+      lista = input[t..idx]
+      part_2 = lista.min + lista.max
       break
     end
   end
   break if part_2 > 0
 end
 
-# de nem 24069487...
 p part_2
-p lista
+
