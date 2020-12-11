@@ -56,39 +56,3 @@ def airport_seats(input)
 end
 
 airport_seats(input)
-
-
-# part2
-def adjacents_strange(row, col, input)
-  max_row = input.size-1
-  max_col = input.first.length-1
-  occupied = 0
-  dist = 1
-  pos = 0
-
-  adj = [[row, col-dist], [row, col+dist], [row-dist, col-dist], [row-dist, col], [row-dist, col+dist], [row+dist, col-dist], [row+dist, col], [row+dist, col+dist]]
-  
-  adj.reject! {|el| el[0]==row-1} if row == 0
-  adj.reject! {|el| el[0]==row+1} if row == max_row
-  adj.reject! {|el| el[1]==col-1} if col == 0
-  adj.reject! {|el| el[1]==col+1} if col == max_col 
-
-  
-  reached = 0
-  next_adj = ad.map{|a| a.map(&:dup)}
-
-  
-  adj.each do |coo|
-    if input[coo[0]][coo[1]] == "#"
-      occupied += 1
-      next_adj.delete!(coo)
-    elsif input[coo[0]][coo[1]] == "L"
-      next_adj.delete!(coo)
-    end
-    dist+=1
-  end
-
-  adj = next_adj.map{|a| a.map{[a[0]]}}
-
-  occupied
-end
