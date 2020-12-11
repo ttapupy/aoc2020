@@ -26,8 +26,10 @@ part_2 = 0
 s = input.size
 s.times do |t|
   (t..s-1).each do |idx|
-    if input[t..idx].sum == part_1
-      lista = input[t..idx]
+    lista = input[t..idx]
+    if lista.sum > part_1
+      break
+    elsif lista.sum == part_1
       part_2 = lista.min + lista.max
       break
     end
