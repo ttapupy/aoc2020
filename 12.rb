@@ -5,17 +5,14 @@ input = File.readlines("./#{base_name}.input", chomp: true).map do |i|
 end  
 
 def turn(cd, rotate, deg)
-  right_turns=['E', 'S', 'W', 'N']
-  left_turns=['E', 'N', 'W', 'S']
+  directions=['E', 'S', 'W', 'N']
   degrees=[0, 90, 180, 270]
+  current = directions.index(cd)
+  turn = degrees.index(deg)
   if rotate == 'L'
-    current = left_turns.index(cd)
-    turn = degrees.index(deg)
-    new_dir = left_turns[(current+turn)%4]
+    new_dir = directions[(current-turn)%4]
   else
-    current = right_turns.index(cd)
-    turn = degrees.index(deg)
-    new_dir = right_turns[(current+turn)%4]
+    new_dir = directions[(current+turn)%4]
   end
   new_dir
 end
