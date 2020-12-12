@@ -10,11 +10,10 @@ def turn(cd, rotate, deg)
   current = directions.index(cd)
   turn = degrees.index(deg)
   if rotate == 'L'
-    new_dir = directions[(current-turn)%4]
+    directions[(current-turn)%4]
   else
-    new_dir = directions[(current+turn)%4]
+    directions[(current+turn)%4]
   end
-  new_dir
 end
 
 def move(x, y, way, unit)
